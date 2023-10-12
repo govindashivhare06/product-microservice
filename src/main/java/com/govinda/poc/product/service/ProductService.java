@@ -1,18 +1,18 @@
 package com.govinda.poc.product.service;
 
-import com.govinda.poc.product.domain.Product;
+import com.govinda.poc.product.domain.ProductWs;
 
 import java.util.List;
 
 public interface ProductService {
-    List<Product> getProducts();
+    List<ProductWs> getProducts();
 
-    Product getProduct(String productId);
+    ProductWs getProduct(String productId);
 
-    List<Product> insertProduct(Product product);
+    List<ProductWs> insertProduct(ProductWs product);
 
-    Product updateProduct(Product product);
+    ProductWs updateProduct(ProductWs product);
 
-    List<Product> deleteProductById(String productId);
+    List<ProductWs> deleteProductById(String productId);
 
 }

@@ -1,12 +1,17 @@
-package com.govinda.poc.product.domain;
+package com.govinda.poc.product.entity;
 
-import org.springframework.stereotype.Component;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
-import java.math.BigDecimal;
-
-@Component
+@Entity
 public class Product {
-    private String productId;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
     private String productName;
 
     private String productDescription;
@@ -15,39 +20,12 @@ public class Product {
 
     private String status;
 
-    public Product() {
+    public Product(){
+
     }
 
-    public Product(String productId, String productName, String productDescription, Integer productPrice, String status) {
-        this.productId = productId;
-        this.productName = productName;
-        this.productDescription = productDescription;
-        this.productPrice = productPrice;
-        this.status = status;
-    }
-
-    public String getProductId() {
-        return productId;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public String getProductDescription() {
-        return productDescription;
-    }
-
-    public Integer getProductPrice() {
-        return productPrice;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setProductId(String productId) {
-        this.productId = productId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setProductName(String productName) {
@@ -66,11 +44,30 @@ public class Product {
         this.status = status;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public String getProductDescription() {
+        return productDescription;
+    }
+
+    public Integer getProductPrice() {
+        return productPrice;
+    }
+
+    public String getStatus() {
+        return status;
+    }
 
     @Override
     public String toString() {
         return "Product {" +
-                "productId='" + productId + '\'' +
+                "id=" + id +
                 ", productName='" + productName + '\'' +
                 ", productDescription='" + productDescription + '\'' +
                 ", productPrice=" + productPrice +

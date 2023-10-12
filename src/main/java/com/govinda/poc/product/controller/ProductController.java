@@ -1,6 +1,6 @@
 package com.govinda.poc.product.controller;
 
-import com.govinda.poc.product.domain.Product;
+import com.govinda.poc.product.domain.ProductWs;
 import com.govinda.poc.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -20,32 +20,33 @@ public class ProductController {
     }
 
     @GetMapping(value = "/products", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Product> getProductList() {
+    public List<ProductWs> getProductList() {
         return productService.getProducts();
     }
 
     @GetMapping(value = "/products/{productId}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Product getProductList(@PathVariable("productId") String productId) {
+    public ProductWs getProductList(@PathVariable("productId") String productId) {
+        System.out.println(productId);
         return productService.getProduct(productId);
     }
 
     @PutMapping(value = "/products", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Product> insertProduct(@RequestBody Product product) {
+    public List<ProductWs> insertProduct(@RequestBody ProductWs product) {
         return productService.insertProduct(product);
     }
 
     @PostMapping(value = "/products", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Product updateProduct(@RequestBody Product product) {
+    public ProductWs updateProduct(@RequestBody ProductWs product) {
         return productService.updateProduct(product);
     }
 
     @DeleteMapping(value = "/products", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Product> deleteProduct(@RequestBody Product product) {
+    public List<ProductWs> deleteProduct(@RequestBody ProductWs product) {
         return productService.deleteProductById(product.getProductId());
     }
 
     @DeleteMapping(value = "/products/{productId}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Product> deleteProduct(@PathVariable("productId") String productId) {
+    public List<ProductWs> deleteProduct(@PathVariable("productId") String productId) {
         return productService.deleteProductById(productId);
     }
 
